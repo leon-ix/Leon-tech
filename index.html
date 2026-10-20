@@ -1,1 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080914">
+<meta name="description" content="LEON TECH — Web Development, Android Apps, AI Solutions and Custom Software.">
+<title>LEON TECH | Build Beyond Limits</title>
 
+<style>
+:root{
+  --bg:#080914;
+  --panel:#111426;
+  --blue:#39d5ff;
+  --purple:#9b5cff;
+  --text:#f5f7ff;
+  --muted:#a5acc5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+.container{width:min(1120px,90%);margin:auto}
+header{
+  position:sticky;top:0;z-index:10;
+  background:rgba(8,9,20,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid #ffffff12;
+}
+nav{
+  min-height:76px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.logo{font-size:24px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--blue)}
+.navlinks{display:flex;gap:24px;align-items:center}
+.navlinks a{font-size:14px;color:var(--muted)}
+.navlinks a:hover{color:var(--blue)}
+.menu{display:none;background:none;color:white;border:0;font-size:26px}
+.hero{
+  min-height:660px;display:grid;place-items:center;
+  position:relative;text-align:center;overflow:hidden;
+  padding:100px 0;
+}
+.glow{
+  position:absolute;width:350px;height:350px;border-radius:50%;
+  filter:blur(110px);opacity:.25;pointer-events:none;
+}
+.g1{background:var(--blue);top:10%;left:-150px}
+.g2{background:var(--purple);right:-150px;bottom:0}
+.hero-content{position:relative;z-index:1}
+.badge{
+  display:inline-block;border:1px solid #39d5ff55;
+  border-radius:50px;padding:8px 16px;
+  color:var(--blue);font-size:12px;letter-spacing:2px;
+  margin-bottom:25px;background:#39d5ff09;
+}
+h1{
+  font-size:clamp(42px,8vw,82px);line-height:1.08;
+  letter-spacing:-3px;margin-bottom:24px;
+}
+.gradient{
+  background:linear-gradient(90deg,var(--blue),#9b8aff,var(--purple));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{max-width:650px;margin:0 auto 30px;color:var(--muted);font-size:17px}
+.buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:13px 23px;border-radius:12px;font-weight:bold;
+  border:1px solid #ffffff20;transition:.25s;cursor:pointer;
+}
+.btn-primary{
+  color:#061018;background:linear-gradient(100deg,var(--blue),#8d8bff);
+  border:0;box-shadow:0 0 28px #39d5ff20;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px #39d5ff20}
+section{padding:85px 0}
+.section-head{text-align:center;margin-bottom:42px}
+.eyebrow{color:var(--blue);font-size:12px;letter-spacing:3px;font-weight:bold}
+h2{font-size:clamp(30px,5vw,46px);margin:10px 0}
+.section-head p,.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:linear-gradient(145deg,#15192d,#0d1020);
+  border:1px solid #ffffff12;border-radius:20px;
+  padding:27px;transition:.3s;
+}
+.card:hover{transform:translateY(-6px);border-color:#39d5ff70}
+.icon{
+  width:52px;height:52px;display:grid;place-items:center;
+  border-radius:15px;background:#39d5ff12;
+  font-size:25px;margin-bottom:18px;
+}
+.card h3{font-size:20px;margin-bottom:10px}
+.card p{color:var(--muted);font-size:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}
+.tag{
+  color:#c5c9df;background:#ffffff08;
+  border:1px solid #ffffff12;padding:5px 9px;
+  border-radius:7px;font-size:11px;
+}
+.about{
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:45px;
+}
+.about-box{
+  min-height:300px;display:grid;place-items:center;
+  text-align:center;border-radius:25px;
+  border:1px solid #9b5cff55;
+  background:radial-gradient(circle at center,#36205d,#101326 65%);
+}
+.about-symbol{
+  font-size:70px;font-weight:900;
+  color:var(--blue);text-shadow:0 0 35px #39d5ff70;
+}
+.about h2{line-height:1.2;margin:15px 0}
+.about p{color:var(--muted);margin-bottom:20px}
+.project-card{padding:0;overflow:hidden}
+.project-art{
+  min-height:160px;display:grid;place-items:center;
+  font-size:48px;background:linear-gradient(135deg,#151e39,#322052);
+}
+.project-info{padding:22px}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px}
+.contact-info,.form{
+  background:var(--panel);border:1px solid #ffffff12;
+  border-radius:20px;padding:27px;
+}
+.contact-info p{color:var(--muted);margin:10px 0 24px}
+.contact-item{padding:14px 0;border-bottom:1px solid #ffffff12}
+.contact-item small{display:block;color:var(--muted)}
+.form label{display:block;font-size:13px;margin-bottom:7px}
+.form input,.form textarea{
+  width:100%;padding:13px;margin-bottom:17px;
+  background:#090c19;color:white;border:1px solid #ffffff20;
+  border-radius:10px;outline:none;
+}
+.form input:focus,.form textarea:focus{border-color:var(--blue)}
+.form textarea{min-height:120px;resize:vertical}
+.form .btn{width:100%}
+.notice{font-size:12px;color:var(--muted);margin-top:12px}
+footer{
+  padding:30px 0;border-top:1px solid #ffffff12;
+  text-align:center;color:var(--muted);font-size:13px;
+}
+footer .logo{margin-bottom:8px}
+.reveal{animation:rise .8s ease both}
+@keyframes rise{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:760px){
+  .menu{display:block}
+  .navlinks{
+    display:none;position:absolute;top:76px;left:0;right:0;
+    padding:20px 5%;background:#0b0d1b;
+    border-bottom:1px solid #ffffff15;
+    flex-direction:column;align-items:flex-start;
+  }
+  .navlinks.open{display:flex}
+  .grid{grid-template-columns:1fr}
+  .about,.contact-grid{grid-template-columns:1fr}
+  .hero{min-height:580px;padding:75px 0}
+  h1{letter-spacing:-1.5px}
+  section{padding:65px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">LEON<span> TECH</span></a>
+    <button class="menu" id="menuBtn" aria-label="Toggle navigation"
+      aria-expanded="false">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="container hero-content reveal">
+    <div class="badge">✦ INNOVATION · DESIGN · TECHNOLOGY</div>
+    <h1>Build Beyond<br><span class="gradient">Limits.</span></h1>
+    <p>
+      We turn bold ideas into powerful digital experiences.
+      From modern websites to mobile applications and AI solutions,
+      welcome to the next level of technology.
+    </p>
+    <div class="buttons">
+      <a class="btn btn-primary" href="#contact">Start a Project ↗</a>
+      <a class="btn" href="#services">Explore Services ↓</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">WHAT WE DO</div>
+      <h2>Our <span class="gradient">Services</span></h2>
+      <p>Smart solutions built around your vision.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="icon">🌐</div>
+        <h3>Website Development</h3>
+        <p>Responsive business websites, portfolios and landing pages designed for mobile and desktop.</p>
+        <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Responsive</span></div>
+      </article>
+      <article class="card">
+        <div class="icon">📱</div>
+        <h3>Android App Development</h3>
+        <p>Modern Android experiences with clean interfaces, useful features and smooth navigation.</p>
+        <div class="tags"><span class="tag">Android</span><span class="tag">UI Design</span><span class="tag">Mobile</span></div>
+      </article>
+      <article class="card">
+        <div class="icon">🤖</div>
+        <h3>AI Solutions</h3>
+        <p>AI-powered assistants, smart workflows and intelligent tools built for practical needs.</p>
+        <div class="tags"><span class="tag">AI</span><span class="tag">Automation</span><span class="tag">APIs</span></div>
+      </article>
+      <article class="card">
+        <div class="icon">⚙️</div>
+        <h3>Custom Software</h3>
+        <p>Purpose-built digital tools that help simplify tasks and improve everyday workflows.</p>
+        <div class="tags"><span class="tag">Tools</span><span class="tag">Software</span></div>
+      </article>
+      <article class="card">
+        <div class="icon">🎨</div>
+        <h3>UI/UX Design</h3>
+        <p>Thoughtful layouts, clear user journeys and polished visual experiences.</p>
+        <div class="tags"><span class="tag">Prototyping</span><span class="tag">Design</span></div>
+      </article>
+      <article class="card">
+        <div class="icon">🛠️</div>
+        <h3>Website Maintenance</h3>
+        <p>Updates, improvements and troubleshooting to help keep websites running smoothly.</p>
+        <div class="tags"><span class="tag">Updates</span><span class="tag">Support</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about">
+    <div class="about-box">
+      <div>
+        <div class="about-symbol">L<span class="gradient">T</span></div>
+        <div class="eyebrow">IDEAS INTO REALITY</div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">ABOUT LEON TECH</div>
+      <h2>Technology with<br><span class="gradient">Purpose.</span></h2>
+      <p>
+        LEON TECH is a technology brand focused on modern digital experiences.
+        Our goal is to bring creativity and technology together through
+        thoughtful design, useful applications and smart software.
+      </p>
+      <p>
+        Every project starts with an idea. Let's explore what yours can become.
+      </p>
+      <a class="btn btn-primary" href="#contact">Let's Talk ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">OUR WORK</div>
+      <h2>Featured <span class="gradient">Projects</span></h2>
+      <p>A showcase of digital ideas and product concepts.</p>
+    </div>
+    <div class="grid">
+      <article class="card project-card">
+        <div class="project-art">💬</div>
+        <div class="project-info">
+          <h3>LEON AI</h3>
+          <p>An AI assistant concept designed to make everyday digital tasks easier.</p>
+          <div class="tags"><span class="tag">AI</span><span class="tag">Assistant</span></div>
+        </div>
+      </article>
+      <article class="card project-card">
+        <div class="project-art">💻</div>
+        <div class="project-info">
+          <h3>Web Experiences</h3>
+          <p>Modern web concepts built around responsive layouts and clean design.</p>
+          <div class="tags"><span class="tag">Web</span><span class="tag">Design</span></div>
+        </div>
+      </article>
+      <article class="card project-card">
+        <div class="project-art">⚡</div>
+        <div class="project-info">
+          <h3>Smart Tools</h3>
+          <p>Digital utility concepts that focus on simplicity and productivity.</p>
+          <div class="tags"><span class="tag">Tools</span><span class="tag">Innovation</span></div>
+        </div>
+      </article>
+    </div>
+    <p class="notice" style="text-align:center;margin-top:20px">
+      Project cards are showcase concepts. Add your completed project links when ready.
+    </p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">LET'S CONNECT</div>
+      <h2>Have an <span class="gradient">Idea?</span></h2>
+      <p>Tell us what you want to build. Let's make it happen.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Start a Conversation</h3>
+        <p>Share a few details about your project and its goals.</p>
+        <div class="contact-item">
+          ✉️ <strong>Email</strong>
+          <small>Add your business email to activate enquiries.</small>
+        </div>
+        <div class="contact-item">
+          🌍 <strong>Working Worldwide</strong>
+          <small>Digital projects, wherever you are.</small>
+        </div>
+        <div class="contact-item">
+          ⚡ <strong>Our Focus</strong>
+          <small>Design · Development · Innovation</small>
+        </div>
+      </div>
+
+      <form class="form" id="contactForm">
+        <label for="name">Your Name</label>
+        <input id="name" name="name" placeholder="Enter your name" required maxlength="100">
+
+        <label for="email">Your Email</label>
+        <input id="email" name="email" type="email" placeholder="Enter your email" required maxlength="150">
+
+        <label for="service">Service Interested In</label>
+        <input id="service" name="service" placeholder="Website, App, AI..." required maxlength="150">
+
+        <label for="message">Project Details</label>
+        <textarea id="message" name="message" placeholder="Tell us about your idea..." required maxlength="3000"></textarea>
+
+        <button class="btn btn-primary" type="submit">Prepare Enquiry ↗</button>
+        <p class="notice">This form opens your email app. It does not automatically store or send enquiries.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="logo">LEON<span style="color:var(--blue)"> TECH</span></div>
+    <p>Building digital experiences with purpose.</p>
+    <p style="margin-top:12px">© <span id="year"></span> LEON TECH. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navlinks = document.getElementById('navlinks');
+
+menuBtn.addEventListener('click', () => {
+  const opened = navlinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(opened));
+});
+
+navlinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.getElementById('contactForm').addEventListener('submit', event => {
+  event.preventDefault();
+
+  // Replace this with your real business email before using the form.
+  const businessEmail = 'YOUR_EMAIL_HERE';
+
+  if (businessEmail === 'YOUR_EMAIL_HERE') {
+    alert('The website design is ready! Add your business email in the code to activate enquiries.');
+    return;
+  }
+
+  const form = new FormData(event.target);
+  const subject = encodeURIComponent('LEON TECH Website Enquiry - ' + form.get('service'));
+  const body = encodeURIComponent(
+    'Name: ' + form.get('name') +
+    '\nEmail: ' + form.get('email') +
+    '\nService: ' + form.get('service') +
+    '\nProject details: ' + form.get('message')
+  );
+
+  window.location.href = 'mailto:' + businessEmail + '?subject=' + subject + '&body=' + body;
+});
+</script>
+</body>
+                            </html>
